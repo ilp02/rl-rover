@@ -3,14 +3,14 @@
 **Status:** experimental / learning project. Two differential-drive rovers play tag in a 1.5 m × 1 m arena. Overhead camera tracks ArUco markers; a PC sends poses to each rover over sockets; each Pi Zero 2 W runs a small client that converts poses to wheel commands via a learned policy.
 
 ## Demo goal
-Reproduce a 60‑second tag game: two rovers (IDs 4 & 5) in a field marked by ArUco IDs 0–3, controlled by policies trained in Unity ML‑Agents.
+Reproduce a short tag game: two rovers (IDs 4 & 5) in a field marked by ArUco IDs 0–3, controlled by policies trained in Unity ML‑Agents.
 
 ## Hardware (quick)
 - Chassis: Adafruit aluminum kit (2× DC motors)
 - Motor driver: DRV8833
 - Compute: Raspberry Pi Zero 2 W (×2)
 - Power: Li‑ion pack for Pi; **6 V** AA pack for motors
-- Overhead: PC + webcam (bird’s‑eye)
+- Overhead: PC + webcam (top-down view)
 
 Details: `hardware/BOM.md` and `hardware/WIRING.md`.
 
@@ -18,7 +18,7 @@ Details: `hardware/BOM.md` and `hardware/WIRING.md`.
 - Unity `<FILL ME: version>` + ML‑Agents `<FILL ME: version>`
 - Python `<FILL ME>` on PC/Pi
 - OpenCV (ArUco), simple Kalman filter
-- Sockets: `<FILL ME: TCP/UDP>`
+- TCP Sockets
 
 ## How it fits
 [Webcam+PC] --poses--> [Pi Rover] --PWM--> [DRV8833] --motors-->
@@ -31,15 +31,14 @@ Arena defined by ArUco IDs 0–3; rovers carry IDs 4–5.
 2. Print and place `playground/markers/` (IDs 0–3 corners, 4–5 on rovers).
 3. Run tracking server: `python control/pc_client/run_tracking_server.py`
 4. Start rover clients (on each Pi): see `control/pi_agent/README.md`
-5. Watch terminal output; press `E` to emergency stop.
+5. Watch terminal output; press `Y` to emergency stop.
 
 ## Training (ML‑Agents)
 - Configs: `ml/configs/`
 - Notes & reward design: `ml/README.md`
-- Export/inference: `<FILL ME: ONNX/Barracuda/PyTorch>`
+- Export/inference: `ONNX`
 
 ## Known limitations
-- Pose jitter at low light; Kalman tuned for ≥ `<FILL ME>` FPS.
 - SW PWM on Pi can jitter under load; consider hardware PWM.
 - Domain randomization is minimal; outdoors transfer not robust.
 

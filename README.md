@@ -12,43 +12,32 @@ Reproduce a short tag game: two rovers (IDs 4 & 5) in a field marked by ArUco ID
 - Power: Li‑ion pack for Pi; **6 V** AA pack for motors
 - Overhead: PC + webcam (top-down view)
 
-Details: `hardware/BOM.md` and `hardware/WIRING.md`.
+Details: `hardware/BOM.md` and `hardware/INSTRUCTIONS.md`.
 
 ## Software (quick)
-- Unity `<FILL ME: version>` + ML‑Agents `<FILL ME: version>`
-- Python `<FILL ME>` on PC/Pi
+- Unity `2022.3.16f1` + ML‑Agents
+- Python `3.12` on PC, Python `3.10` on Pi
 - OpenCV (ArUco), simple Kalman filter
-- TCP Sockets
-
-## How it fits
-[Webcam+PC] --poses--> [Pi Rover] --PWM--> [DRV8833] --motors-->
---poses--> [Pi Rover]
-Arena defined by ArUco IDs 0–3; rovers carry IDs 4–5.
-
+- TCP Socket over local network
 
 ## Quick start (PC)
-1. Install deps: `pip install -r control/pc_client/requirements.txt`
-2. Print and place `playground/markers/` (IDs 0–3 corners, 4–5 on rovers).
+1. Install deps: `pip install -r controls/rovers/requirements.txt`
+2. Print and place ArUco markers (IDs 0–3 corners, 4–5 on rovers).
 3. Run tracking server: `python control/pc_client/run_tracking_server.py`
-4. Start rover clients (on each Pi): see `control/pi_agent/README.md`
+4. Start rover clients (on each Pi).
 5. Watch terminal output; press `Y` to emergency stop.
 
 ## Training (ML‑Agents)
-- Configs: `ml/configs/`
-- Notes & reward design: `ml/README.md`
+- Configs: `ml\training\tag_config.yaml`
+- Notes & reward design: `ml\README.md`
 - Export/inference: `ONNX`
 
 ## Known limitations
-- SW PWM on Pi can jitter under load; consider hardware PWM.
-- Domain randomization is minimal; outdoors transfer not robust.
+- 3V battery pack is not enough voltage for motors, recommend switching to 6V.
+- Domain randomization is minimal; transfer does not work.
 
 ## Roadmap
-- [ ] Replace SW PWM with hardware PWM or `pigpio`
+- [ ] Increased domain randomization to bridge the 'Reality gap'.
 - [ ] Camera calibration & homography guide
+- [ ] Replace SW PWM with hardware PWM
 - [ ] Improve reward shaping for capture/escape
-- [ ] Packet timestamps + latency compensation
-
-## License
-- Code: `<FILL ME: MIT/Apache-2.0>`
-- Docs/Data: `<FILL ME: CC BY 4.0/CC0>`
-- (If hardware files are added) Hardware: `<FILL ME: CERN OHL-S/W/P>`

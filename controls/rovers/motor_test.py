@@ -22,8 +22,7 @@ for i in range(5):
         GPIO.output(motor[0], GPIO.HIGH)
         GPIO.output(motor[1], GPIO.LOW)
 
-    time.sleep(5)
-    break
+    time.sleep(1)
     print(4)
     #cw
     for motor in motor_pins:

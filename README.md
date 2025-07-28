@@ -3,14 +3,14 @@
 **Status:** experimental / learning project. Two differential-drive rovers play tag in a 1.5 m × 1 m arena. Overhead camera tracks ArUco markers; a PC sends poses to each rover over sockets; each Pi Zero 2 W runs a small client that converts poses to wheel commands via a learned policy.
 
 ## Demo goal
-Reproduce a short tag game: two rovers (IDs 4 & 5) in a field marked by ArUco IDs 0–3, controlled by policies trained in Unity ML‑Agents.
+Reproduce a short tag game: two rovers in a field marked by ArUco markers, controlled by policies trained in Unity ML‑Agents.
 
 ## Hardware (quick)
 - Chassis: Adafruit aluminum kit (2× DC motors)
 - Motor driver: DRV8833
 - Compute: Raspberry Pi Zero 2 W (×2)
-- Power: Li‑ion pack for Pi; **6 V** AA pack for motors
-- Overhead: PC + webcam (top-down view)
+- Power: Li‑ion pack for Pi; 3 V AA pack for motors
+- Positioning: PC + webcam (top-down view)
 
 Details: `hardware/BOM.md` and `hardware/INSTRUCTIONS.md`.
 

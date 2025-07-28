@@ -7,7 +7,7 @@ A file list for running the rover system.
 | File | Purpose | How to run |
 | --- | --- | --- |
 | `motor_test.py` | Simple motor script for testing | On the rover: `python motor_test.py` |
-| `rover_client.py` | Main rover client. Connects to the PC, receives pose, and drives motors | SSH into the rover, then run: `python rover_client.py --server <PC_IP>:<PORT> --id <4 or 5>` |
+| `rover_client.py` | Main rover client. Connects to the PC, receives pose, and drives motors | SSH into the rover, then run: `python rover_client.py`. Edit the script for local IP address. |
 
 ## PC Clients (`./pc_client`)
 

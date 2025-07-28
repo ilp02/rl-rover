@@ -15,8 +15,8 @@ Reproduce a short tag game: two rovers in a field marked by ArUco markers, contr
 Details: `hardware/BOM.md` and `hardware/INSTRUCTIONS.md`.
 
 ## Software (quick)
-- Unity `2022.3.16f1` + ML‑Agents
-- Python `3.12` on PC, Python `3.10` on Pi
+- Unity `2022.3.16f1` + ML‑Agents + Python `3.10`
+- Python `3.12` on PC, Python `3.11` on Pi
 - OpenCV (ArUco), simple Kalman filter
 - TCP Socket over local network
 
